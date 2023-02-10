@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "asicDotNetServices.Business
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicDotNetServices.BusinessLogic.Test", "BasicDotNetServices.BusinessLogic.Test\BasicDotNetServices.BusinessLogic.Test.csproj", "{720855B3-23E8-4A1F-AA54-C5758261A70C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicDotNetServices.Utilities", "BasicDotNetServices.Utilities\BasicDotNetServices.Utilities.csproj", "{9956134D-623E-44B0-96F3-83AE58472AAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{720855B3-23E8-4A1F-AA54-C5758261A70C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{720855B3-23E8-4A1F-AA54-C5758261A70C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{720855B3-23E8-4A1F-AA54-C5758261A70C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9956134D-623E-44B0-96F3-83AE58472AAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9956134D-623E-44B0-96F3-83AE58472AAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9956134D-623E-44B0-96F3-83AE58472AAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9956134D-623E-44B0-96F3-83AE58472AAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 		{C49FAF31-E5D4-4E89-A01A-E55C33360A52} = {2CD01F1B-C1A1-49EC-9EAE-BE012EC1CD75}
 		{C2B49888-6B11-4BE2-82CC-00B49505EAC5} = {2CD01F1B-C1A1-49EC-9EAE-BE012EC1CD75}
 		{720855B3-23E8-4A1F-AA54-C5758261A70C} = {054FFD80-1A30-479E-89DF-2535F99E1C1C}
+		{9956134D-623E-44B0-96F3-83AE58472AAD} = {2CD01F1B-C1A1-49EC-9EAE-BE012EC1CD75}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB9A8BF8-5109-4949-AAC4-094C7CB2947C}
