@@ -1,5 +1,6 @@
 ﻿using BasicDotNetServices.Core.Model;
 using BasicDotNetServices.Core.Validator;
+using BasicDotNetServices.DAL.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using System.Xml.Linq;
 
@@ -9,23 +10,25 @@ namespace BasicDotNetServices.API.Controllers
     [Route("api/[controller]")] // It will take name from the controller name
     public class ContactsController : Controller
     {
-        /*private readonly ContactsAPIDbContext dbContxt;
+        private readonly IContactRepository _db;
         
-        public ContatcsController(ContactsAPIDbContext dbContext) // Inject DbContext
+        public ContactsController(IContactRepository db) // Inject DbContext
         {
-            //this.dbContxt = dbContext;
+            _db = db;
         }
-        */
+        
         [HttpGet]
         //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<DBContact>))]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Contact>))]
 
         public IActionResult GetContacts()
         {
-            // return Ok(dbContxt.Contacts.ToList());
+            //IEnumerable<Contact> contactsList = _db.GetAll();
+            // return Ok(contactsList);
             List<Contact> contacts = new List<Contact>();
             contacts.Add(new Contact()
             {
+                id = new Guid("74901648-8341-4784-ad5b-ad649ffc7ff4"),
                 Name = "Test1",
                 Email = "sasas111@email.com",
                 Phone = 9999999991,
@@ -34,6 +37,7 @@ namespace BasicDotNetServices.API.Controllers
             );
             contacts.Add(new Contact()
             {
+                id = new Guid("0ef01d7e-42ba-4f23-8a1f-1dff394440be"),
                 Name = "Test2",
                 Email = "sasas2222@email.com",
                 Phone = 9999999992,
@@ -58,8 +62,24 @@ namespace BasicDotNetServices.API.Controllers
                 return Ok(dBcontact);
             }
             */
-            return NoContent();
-
+            /* Latest */
+            /*
+            var contact = _db.GetFirstOrDefault(e => e.id == id);
+            if(contact == null)
+            {
+                return NoContent();
+            }
+            return Ok(contact);
+            */
+            
+            return Ok(new Contact()
+            {
+                id = new Guid("74901648-8341-4784-ad5b-ad649ffc7ff4"),
+                Name = "Test1",
+                Email = "sasas111@email.com",
+                Phone = 9999999991,
+                Address = "AddressAddress1"
+            });
         }
 
         [HttpPost]
@@ -93,6 +113,11 @@ namespace BasicDotNetServices.API.Controllers
             var errorMessages = result.Errors.Select(x => x.ErrorMessage).ToList();
             return BadRequest(errorMessages);
             */
+            /*  Latest */
+            /*
+            _db.Add(data);
+            _db.Save();
+            */
             return Ok(data);
 
         }
@@ -118,6 +143,11 @@ namespace BasicDotNetServices.API.Controllers
                 return Ok(dBcontact);
             }
             */
+            /* Latest */
+            /*
+            _db.Update(data);
+            _db.Save();
+            */
             return NotFound();
         }
 
@@ -134,6 +164,16 @@ namespace BasicDotNetServices.API.Controllers
                 dbContxt.Remove(dBcontact);
                 await dbContxt.SaveChangesAsync();
                 return Ok(dBcontact);
+            }
+            */
+            /* Latest */
+            /*
+             var category = _db.GetFirstOrDefault(e => e.id == id);
+            if (category != null)
+            {
+                _db.Remove(category);
+                _db.Save();
+                return Ok(category);
             }
             */
             return NotFound();
