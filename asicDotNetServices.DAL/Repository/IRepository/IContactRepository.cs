@@ -14,6 +14,5 @@ namespace BasicDotNetServices.DAL.Repository.IRepository
     public interface IContactRepository : IRepository<Contact>
     {
         void Update(Contact contact);
-        void Save();
     }
 }

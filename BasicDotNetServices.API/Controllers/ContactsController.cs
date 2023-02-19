@@ -10,11 +10,11 @@ namespace BasicDotNetServices.API.Controllers
     [Route("api/[controller]")] // It will take name from the controller name
     public class ContactsController : Controller
     {
-        private readonly IContactRepository _db;
+        private readonly IUnitOfWork _unitOfWork;
         
-        public ContactsController(IContactRepository db) // Inject DbContext
+        public ContactsController(IUnitOfWork unitOfWork) // Inject DbContext
         {
-            _db = db;
+            _unitOfWork = unitOfWork;
         }
         
         [HttpGet]
@@ -23,8 +23,9 @@ namespace BasicDotNetServices.API.Controllers
 
         public IActionResult GetContacts()
         {
-            //IEnumerable<Contact> contactsList = _db.GetAll();
-            // return Ok(contactsList);
+             IEnumerable<Contact> contactsList = _unitOfWork.Contact.GetAll();
+             return Ok(contactsList);
+            /*
             List<Contact> contacts = new List<Contact>();
             contacts.Add(new Contact()
             {
@@ -45,6 +46,7 @@ namespace BasicDotNetServices.API.Controllers
             }
             );
             return Ok(contacts);
+            */
 
         }
 
@@ -63,14 +65,14 @@ namespace BasicDotNetServices.API.Controllers
             }
             */
             /* Latest */
-            /*
-            var contact = _db.GetFirstOrDefault(e => e.id == id);
+            
+            var contact = _unitOfWork.Contact.GetFirstOrDefault(e => e.id == id);
             if(contact == null)
             {
                 return NoContent();
             }
             return Ok(contact);
-            */
+            /*
             
             return Ok(new Contact()
             {
@@ -80,6 +82,7 @@ namespace BasicDotNetServices.API.Controllers
                 Phone = 9999999991,
                 Address = "AddressAddress1"
             });
+            */
         }
 
         [HttpPost]
@@ -114,10 +117,10 @@ namespace BasicDotNetServices.API.Controllers
             return BadRequest(errorMessages);
             */
             /*  Latest */
-            /*
-            _db.Add(data);
-            _db.Save();
-            */
+            data.id = Guid.NewGuid();
+            _unitOfWork.Contact.Add(data);
+            _unitOfWork.Save();
+            
             return Ok(data);
 
         }
@@ -144,11 +147,11 @@ namespace BasicDotNetServices.API.Controllers
             }
             */
             /* Latest */
-            /*
-            _db.Update(data);
-            _db.Save();
-            */
-            return NotFound();
+
+            _unitOfWork.Contact.Update(data);
+            _unitOfWork.Save();
+            return Ok(data);
+            //return NotFound();
         }
 
         [HttpDelete]
@@ -167,15 +170,15 @@ namespace BasicDotNetServices.API.Controllers
             }
             */
             /* Latest */
-            /*
-             var category = _db.GetFirstOrDefault(e => e.id == id);
+            
+             var category = _unitOfWork.Contact.GetFirstOrDefault(e => e.id == id);
             if (category != null)
             {
-                _db.Remove(category);
-                _db.Save();
+                _unitOfWork.Contact.Remove(category);
+                _unitOfWork.Save();
                 return Ok(category);
             }
-            */
+            
             return NotFound();
 
 

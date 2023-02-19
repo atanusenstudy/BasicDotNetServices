@@ -2,6 +2,7 @@ using BasicDotNetServices.Core.Model;
 using BasicDotNetServices.Core.Validator;
 using BasicDotNetServices.DAL.Class;
 using BasicDotNetServices.DAL.Data;
+using BasicDotNetServices.DAL.Repository;
 using BasicDotNetServices.DAL.Repository.IRepository;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -36,7 +37,7 @@ builder.Services.AddDbContext<ContactsAPIDbContext>(options => options.UseInMemo
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
-builder.Services.AddScoped<IContactRepository, ContactsRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
