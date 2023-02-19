@@ -12,6 +12,7 @@ namespace BasicDotNetServices.DAL.Repository.IRepository
     public interface IUnitOfWork
     {
         IContactRepository Contact { get; }
+        IInstitutionRepository Institution { get; }
         void Save();
     }
 }

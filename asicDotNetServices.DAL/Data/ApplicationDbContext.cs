@@ -15,5 +15,7 @@ namespace BasicDotNetServices.DAL.Data
 
         }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Institution> Institutions { get; set; }
+
     }
 }
