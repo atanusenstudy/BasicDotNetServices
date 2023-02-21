@@ -1,0 +1,7 @@
+﻿Drop procedure getUserByEmailAndPassword
+go
+create procedure getUserByEmailAndPassword
+@email varchar(200),
+@password varchar(200)
+as
+select * from Users where Email = @email and Password = @password

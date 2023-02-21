@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BasicDotNetServices.Core.Validator
 {
-    internal class InstitutionValidator : AbstractValidator<Institution>
+    public class InstitutionValidator : AbstractValidator<Institution>
     {
         public InstitutionValidator()
         {
