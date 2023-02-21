@@ -16,13 +16,14 @@ namespace BasicDotNetServices.DAL.Repository
     {
         private ApplicationDbContext _db;
         public IContactRepository Contact { get;private set; }
-
         public IInstitutionRepository Institution { get; private set; }
-
+        public IUserRepository User { get; private set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Contact = new ContactsRepository(_db);
+            Institution= new InstitutionsRepository(_db);
+            User = new UserRepository(_db);
         }
         public void Save()
         {
