@@ -18,6 +18,8 @@ builder.Services.AddControllers().AddFluentValidation();
 /* Adding all the validations here */
 {
     builder.Services.AddTransient<IValidator<Contact>, ContactValidator>();
+    builder.Services.AddTransient<IValidator<Institution>, InstitutionValidator>();
+    builder.Services.AddTransient<IValidator<User>, UserValidator>();
 }
 
 

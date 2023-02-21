@@ -13,6 +13,7 @@ namespace BasicDotNetServices.DAL.Repository.IRepository
     {
         IContactRepository Contact { get; }
         IInstitutionRepository Institution { get; }
+        IUserRepository User { get; }
         void Save();
     }
 }
