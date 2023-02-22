@@ -14,7 +14,6 @@ namespace BasicDotNetServices.Core.Model
         
         public string Name { get; set; }
         public short Established { get; set; }
-        
         public string Address { get; set; }
     }
 }

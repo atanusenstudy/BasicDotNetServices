@@ -72,7 +72,7 @@ namespace BasicDotNetServices.DAL.Class
                     while (rd.Read())
                     {
                         user = new User();
-                        user.Id = 0;
+                        user.Id = rd.GetInt32(0);
                         user.FirstName = rd.GetString(1);
                         user.LastName = rd.GetString(2);
                         user.Email = rd.GetString(3);
